@@ -1,0 +1,20 @@
+# Auto-detect text files and normalize line endings to LF
+* text=auto
+
+# Specify language configurations for GitHub statistics
+*.f90 linguist-language=Fortran
+*.py linguist-language=Python
+
+# Ensure standard text files are treated as text
+*.md text
+*.txt text
+
+# Treat data files as binary so Git doesn't try to track line-by-line diffs if you ever commit them
+*.dat binary
+*.csv binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.gif binary
+*.mp4 binary
