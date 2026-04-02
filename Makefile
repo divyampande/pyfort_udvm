@@ -24,6 +24,7 @@ ifeq ($(OS),Windows_NT)
     MKDIR_OUT = if not exist output mkdir output
     RM_DIR    = if exist $(OBJDIR) rmdir /S /Q $(OBJDIR)
     RM_OUT    = if exist output rmdir /S /Q output
+    RM_OUTSP  = if exist output_sweep rmdir /S /Q output_sweep
     RM_EXE    = if exist $(TARGET).exe del /Q /F $(TARGET).exe
     EXEC      = $(TARGET).exe
     RUN_CMD   = $(EXEC) config.nml
@@ -100,3 +101,4 @@ clean:
 
 veryclean: clean
 	$(RM_OUT)
+	$(RM_OUTSP)

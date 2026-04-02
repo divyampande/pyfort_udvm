@@ -490,7 +490,10 @@ def plotly_wake_animation(cfg, output_dir="output", snap_base="wake"):
 
 
 def run_sweep(
-    kh_values, base_config="config.nml", executable="./udvm", output_base="output_sweep"
+    kh_values,
+    base_config="config.nml",
+    executable="udvm.exe" if os.name == "nt" else "./udvm",
+    output_base="output_sweep",
 ):
     """
     Run the Fortran solver for a range of kh values.
@@ -523,7 +526,7 @@ def run_sweep(
         overrides = {
             "reduced_freq": k,
             "h0": h0_over_c,  # chord = 1 so h0/c = h0
-            "output_dir": f"'{run_dir}'",
+            "output_dir": run_dir.replace("\\", "/"),
         }
         write_nml_override(base_config, tmp_cfg, overrides)
 

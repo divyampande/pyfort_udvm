@@ -47,6 +47,7 @@ udvm
 
 # --- Output Data Files ---
 output/
+output_sweep/
 
 # --- Python & Visualization ---
 __pycache__/
