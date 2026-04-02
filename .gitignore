@@ -39,3 +39,40 @@
 
 # debug information files
 *.dwo
+
+# --- Fortran Build Artifacts ---
+*.o
+*.mod
+udvm_solver
+*.exe
+
+# --- Output Data Files ---
+# Ignore the generated coordinate and force data files
+output_*.dat
+*.csv
+*.txt
+
+# --- Python & Visualization ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Ignore generated plots (you can force-add specific ones for the README later)
+*.png
+*.pdf
+*.svg
+*.mp4
+*.gif
+
+# --- OS Generated Files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
