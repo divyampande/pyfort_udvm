@@ -1,0 +1,29 @@
+&motion
+  motion_type  = 'PLUNGE'
+  h0           = 0.1
+  alpha0       = 0.0
+  phi_pitch    = 0.0
+  x_pivot      = 0.25
+  reduced_freq = 0.5
+/
+
+&flow
+  u_inf = 1.0
+  rho   = 1.0
+  chord = 1.0
+/
+
+&numerical
+  n_panels        = 20
+  n_cycles        = 6
+  steps_per_cycle = 100
+  wake_model      = 'FROZEN'
+  eps_core        = 0.001
+/
+
+&output
+  output_dir     = 'output'
+  snap_interval  = 10
+  force_file     = 'forces.dat'
+  wake_snap_base = 'wake'
+/
