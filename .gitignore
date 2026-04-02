@@ -41,16 +41,12 @@
 *.dwo
 
 # --- Fortran Build Artifacts ---
-*.o
-*.mod
-udvm_solver
+obj/
+udvm
 *.exe
 
 # --- Output Data Files ---
-# Ignore the generated coordinate and force data files
-output_*.dat
-*.csv
-*.txt
+output/
 
 # --- Python & Visualization ---
 __pycache__/
