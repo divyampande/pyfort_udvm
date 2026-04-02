@@ -18,6 +18,25 @@ SRCDIR  = src
 OBJDIR  = obj
 TARGET  = udvm
 
+# --- OS Detection ---
+ifeq ($(OS),Windows_NT)
+    MKDIR_OBJ = if not exist $(OBJDIR) mkdir $(OBJDIR)
+    MKDIR_OUT = if not exist output mkdir output
+    RM_DIR    = if exist $(OBJDIR) rmdir /S /Q $(OBJDIR)
+    RM_OUT    = if exist output rmdir /S /Q output
+    RM_EXE    = if exist $(TARGET).exe del /Q /F $(TARGET).exe
+    EXEC      = $(TARGET).exe
+    RUN_CMD   = $(EXEC) config.nml
+else
+    MKDIR_OBJ = mkdir -p $(OBJDIR)
+    MKDIR_OUT = mkdir -p output
+    RM_DIR    = rm -rf $(OBJDIR)
+    RM_OUT    = rm -rf output
+    RM_EXE    = rm -f $(TARGET)
+    EXEC      = $(TARGET)
+    RUN_CMD   = ./$(EXEC) config.nml
+endif
+
 # Source files MUST be listed in dependency order (used modules before using modules)
 SRCS =  parameters.f90  \
         kinematics.f90   \
@@ -39,10 +58,10 @@ all: $(OBJDIR) output $(TARGET)
 
 # Create object and output directories if they don't exist
 $(OBJDIR):
-	mkdir -p $(OBJDIR)
+	$(MKDIR_OBJ)
 
 output:
-	mkdir -p output
+	$(MKDIR_OUT)
 
 # Link
 $(TARGET): $(OBJS)
@@ -73,10 +92,11 @@ $(OBJDIR)/main.o:       $(OBJDIR)/parameters.o $(OBJDIR)/geometry.o  \
 # ---- Convenience targets ------------------------------------
 
 run: all
-	./$(TARGET) config.nml
+	$(RUN_CMD)
 
 clean:
-	rm -rf $(OBJDIR) $(TARGET)
+	$(RM_DIR)
+	$(RM_EXE)
 
 veryclean: clean
-	rm -rf output
+	$(RM_OUT)

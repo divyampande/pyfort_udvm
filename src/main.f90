@@ -61,7 +61,7 @@ program unsteady_dvm
   call print_parameters()
 
   ! Create output directory (POSIX shell; works on Linux/macOS)
-  call execute_command_line('mkdir -p ' // trim(output_dir), wait=.true.)
+  ! call execute_command_line('mkdir -p ' // trim(output_dir), wait=.true.)
 
   ! ============================================================
   ! 2.  Initialise geometry and wake storage
